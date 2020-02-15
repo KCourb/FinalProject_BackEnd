@@ -2,9 +2,11 @@ package com.projet.clinique.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +17,8 @@ public class Departement {
 	private long idDepartement;
 	@Column
 	private String nomDepartement;
-	@Column
-	private List<Medecin> lstMedecin;  //OneToMany avec Medecin
+	@OneToMany(mappedBy = "departement", cascade=CascadeType.PERSIST)
+	private List<Medecin> lstMedecin;  
 	
 	public long getIdDepartement() {
 		return idDepartement;
