@@ -2,9 +2,13 @@ package com.projet.clinique.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,12 +19,15 @@ public class Consultation {
 	private long idConsultation;
 	@Column
 	private String bilanPrescription;
-	@Column
-	private Rdv rdv;  //OneTone avec Rdv
-	@Column
-	private Facture facture;  //OneTone avec Facture
-	@Column
-	private List<Prescription> lstPrescription;   //OneToMany
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "rdv")
+	private Rdv rdv;  
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "facture")
+	private Facture facture;  
+	@OneToMany(mappedBy = "consultation", cascade = CascadeType.PERSIST)
+	private List<Prescription> lstPrescription;   
+	
 	public long getIdConsultation() {
 		return idConsultation;
 	}

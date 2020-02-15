@@ -2,9 +2,13 @@ package com.projet.clinique.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -18,10 +22,12 @@ public class Rdv {
 	private Date date;
 	@Column
 	private String motif;
-	@Column
-	private Medecin medecin;   //ManyToOne avec Medecin
-	@Column
-	private Patient patient;   //ManyToOne avec Patient
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "medecin")
+	private Medecin medecin;   
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "patient")
+	private Patient patient;   
 	
 	
 	public long getIdRdv() {

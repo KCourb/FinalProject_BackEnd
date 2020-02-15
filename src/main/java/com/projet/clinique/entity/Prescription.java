@@ -1,8 +1,12 @@
 package com.projet.clinique.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
                                                  //EXPORT PDF
@@ -15,8 +19,9 @@ public class Prescription {
 	private long idPrescription;
 	@Column
 	private String description;
-	@Column
-	private Consultation consultation;   //ManyToOne avec Consulation
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "consultation")
+	private Consultation consultation;   
 	
 	
 	public long getIdPrescription() {

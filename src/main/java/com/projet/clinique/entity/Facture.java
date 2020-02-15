@@ -2,9 +2,12 @@ package com.projet.clinique.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
                                                     //    EXPORT PDF
@@ -19,8 +22,10 @@ public class Facture {
 	private Date dateEdition;
 	@Column
 	private Boolean payee;
-	@Column
-	private Consultation consultation;  //OneTone avec Consulation
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "consultation")
+	private Consultation consultation;  
+	
 	public long getIdFacture() {
 		return idFacture;
 	}
