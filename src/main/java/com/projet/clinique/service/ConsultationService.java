@@ -54,16 +54,5 @@ public class ConsultationService {
 		return res;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
