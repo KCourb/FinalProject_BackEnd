@@ -26,5 +26,70 @@ public class Patient {
 	@Column
 	private String mailPatient;
 	
+	
+	public long getIdPatient() {
+		return idPatient;
+	}
+	public void setIdPatient(long idPatient) {
+		this.idPatient = idPatient;
+	}
+	public String getNomPatient() {
+		return nomPatient;
+	}
+	public void setNomPatient(String nomPatient) {
+		this.nomPatient = nomPatient;
+	}
+	public String getPrenomPatient() {
+		return prenomPatient;
+	}
+	public void setPrenomPatient(String prenomPatient) {
+		this.prenomPatient = prenomPatient;
+	}
+	public String getSexe() {
+		return sexe;
+	}
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	public int getNumSecu() {
+		return numSecu;
+	}
+	public void setNumSecu(int numSecu) {
+		this.numSecu = numSecu;
+	}
+	public String getMailPatient() {
+		return mailPatient;
+	}
+	public void setMailPatient(String mailPatient) {
+		this.mailPatient = mailPatient;
+	}
+	public Patient(long idPatient, String nomPatient, String prenomPatient, String sexe, Date dateNaissance,
+			int numSecu, String mailPatient) {
+		super();
+		this.idPatient = idPatient;
+		this.nomPatient = nomPatient;
+		this.prenomPatient = prenomPatient;
+		this.sexe = sexe;
+		this.dateNaissance = dateNaissance;
+		this.numSecu = numSecu;
+		this.mailPatient = mailPatient;
+	}
+	public Patient() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "Patient [idPatient=" + idPatient + ", nomPatient=" + nomPatient + ", prenomPatient=" + prenomPatient
+				+ ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", numSecu=" + numSecu + ", mailPatient="
+				+ mailPatient + "]";
+	}
+	
+	
 
 }
