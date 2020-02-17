@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.projet.clinique.entity.Prescription;
 import com.projet.clinique.entity.Rdv;
-import com.projet.clinique.service.PrescriptionService;
 import com.projet.clinique.service.RdvService;
 
 @Controller

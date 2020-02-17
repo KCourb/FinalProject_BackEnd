@@ -65,6 +65,12 @@ public class Medecin {
 		return "Medecin [idMedecin=" + idMedecin + ", nomMedecin=" + nomMedecin + ", departement=" + departement
 				+ ", lstrdv=" + lstrdv + "]";
 	}
+	public Medecin(long idMedecin, String nomMedecin, Departement departement) {
+		super();
+		this.idMedecin = idMedecin;
+		this.nomMedecin = nomMedecin;
+		this.departement = departement;
+	}
 
 	
 }

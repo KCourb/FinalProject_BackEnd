@@ -19,13 +19,13 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-		
-		<a href="<c:url value="/logout"/>"> Logout</a>
 
-	<ul class="nav">
+<a href="<c:url value="/logout"/>"> Logout</a>
+
+<ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">login</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/All">Departement</a>
 		</li>
@@ -44,86 +44,38 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
-		</li>	
+		</li>
 	</ul>
 	
-	<h3>Page Departement</h3>
-<br>	
-	<form:form action="Ajout" method="post">
-		<table>
-			<tr>
-				<td>Introduire l'id du département<input type="text"
-					name="idDepartement"></td>
-				<td>Introduire le nom<input type="text"
-					name="nomDepartement"></td>
-				
-				<td><input class="btn btn-primary" type="submit"
-					value="Ajouter un département" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
 	<br>
 	
-	<form:form action="Update" method="post">
-		<table>
-			<tr>
-				<td>Introduire l'id du département<input type="text"
-					name="idDepartement"></td>
-				<td>Introduire le nom<input type="text"
-					name="nomDepartement"></td>				
-				<td><input class="btn btn-primary" type="submit"
-					value="Mettre à jour un département" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
-	<br>
-
-	<form:form action="Supp" method="post">
-		<table>
-			<tr>
-				<td>Introduire l'id du département<input type="text"
-					name="idDepartement"></td>
-				<td><input class="btn btn-primary" type="submit"
-					value="Supprimer un département" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
-	<br>
-	
-	<form:form action="ByID" method="get">
-		<table>
-			<tr>
-				<td>Introduire l'id du département<input type="text"
-					name="idDepartement"></td>
-				<td><input class="btn btn-primary" type="submit"
-					value="Rechercher un département par ID" name="action"></td>
-			</tr>
-		</table>		
-	</form:form>
-	
-	<br>
-	<form:form action="All" method="get">
-		<input class="btn btn-primary" type="submit"
-			value="afficher tous les départements" name="action">
-		<br>
-		<br>
+		
 		<p>
-			<b>Liste des départements </b>
+			<b>Médecin</b>
 		</p>
 		<br>
 		<table class="table table-striped">
 			<tr>
-				<th>idDepartement</th>
-				<th>nomDepartement</th>
+				<th>id Médecin</th>
+				<th>nom Médecin</th>	
+				<th>Département</th>			
 			</tr>
-			<c:forEach items="${listeDesDepartements}" var="de">
+		
 				<tr>
-					<td>${de.idDepartement}</td>
-					<td>${de.nomDepartement}</td>
+					<td>${lemedecin.idMedecin}</td>
+					<td>${lemedecin.nomMedecin}</td>
+					<td>${lemedecin.departement.idDepartement}</td>
 				</tr>
-			</c:forEach>
+		
+
+
 		</table>
-	</form:form>
+		
+		
+
+	
+	
+
 
 
 </body>
