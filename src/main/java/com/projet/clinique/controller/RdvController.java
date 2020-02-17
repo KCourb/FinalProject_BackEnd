@@ -1,4 +1,4 @@
-package com.adaming.clinique.controller;
+package com.projet.clinique.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
