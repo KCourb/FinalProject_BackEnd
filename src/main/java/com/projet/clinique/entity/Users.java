@@ -19,7 +19,7 @@ public class Users {
 	@Column
 	private String password;
 	@Column
-	private boolean activated;
+	private Boolean activated;
 	@OneToMany(mappedBy="user")
 	private List<Roles> lstRoles;
 	public long getIdUser() {

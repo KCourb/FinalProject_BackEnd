@@ -36,7 +36,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.httpBasic().and().authorizeRequests().
-		antMatchers("/Client").hasAuthority("ADMIN");
+		antMatchers("/Departement").hasAuthority("ADMIN");
 		http.formLogin().loginPage("/login").passwordParameter("password").
 		usernameParameter("username").defaultSuccessUrl("/").failureUrl("/erreur");
 	}	
