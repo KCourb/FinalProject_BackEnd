@@ -2,9 +2,14 @@ package com.projet.clinique.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,19 +25,20 @@ public class Users {
 	private String password;
 	@Column
 	private Boolean activated;
-	@OneToMany(mappedBy="user")
-	private List<Roles> lstRoles;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idRole")
+	private Roles role;
 	public long getIdUser() {
 		return idUser;
 	}
 	public void setIdUser(long idUser) {
 		this.idUser = idUser;
 	}
-	public String getLogin() {
+	public String getUsername() {
 		return username;
 	}
-	public void setLogin(String login) {
-		this.username = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -40,30 +46,37 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isActivated() {
+	public Boolean getActivated() {
 		return activated;
 	}
-	public void setActivated(boolean activated) {
+	public void setActivated(Boolean activated) {
 		this.activated = activated;
 	}
-	public List<Roles> getLstRoles() {
-		return lstRoles;
+	public Roles getRole() {
+		return role;
 	}
-	public void setLstRoles(List<Roles> lstRoles) {
-		this.lstRoles = lstRoles;
+	public void setRole(Roles role) {
+		this.role = role;
 	}
+	public Users(long idUser, String username, String password, Boolean activated, Roles role) {
+		super();
+		this.idUser = idUser;
+		this.username = username;
+		this.password = password;
+		this.activated = activated;
+		this.role = role;
+	}
+	
+	
+
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Users(long idUser, String login, String password, boolean activated, List<Roles> lstRoles) {
-		super();
-		this.idUser = idUser;
-		this.username = login;
-		this.password = password;
-		this.activated = activated;
-		this.lstRoles = lstRoles;
-	}
+	
+	
+
+
 	
 	
 

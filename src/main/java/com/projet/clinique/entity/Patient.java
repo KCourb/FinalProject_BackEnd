@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,9 @@ public class Patient {
 	private int numSecu;
 	@Column
 	private String mailPatient;
+	@OneToOne
+	@JoinColumn(name = "id_user")
+	private Users user;
 	
 	
 	public long getIdPatient() {
@@ -70,7 +75,7 @@ public class Patient {
 		this.mailPatient = mailPatient;
 	}
 	public Patient(long idPatient, String nomPatient, String prenomPatient, String sexe, Date dateNaissance,
-			int numSecu, String mailPatient) {
+			int numSecu, String mailPatient , Users user) {
 		super();
 		this.idPatient = idPatient;
 		this.nomPatient = nomPatient;
@@ -79,6 +84,7 @@ public class Patient {
 		this.dateNaissance = dateNaissance;
 		this.numSecu = numSecu;
 		this.mailPatient = mailPatient;
+		this.user = user;
 	}
 	public Patient() {
 		super();
@@ -87,7 +93,13 @@ public class Patient {
 	public String toString() {
 		return "Patient [idPatient=" + idPatient + ", nomPatient=" + nomPatient + ", prenomPatient=" + prenomPatient
 				+ ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", numSecu=" + numSecu + ", mailPatient="
-				+ mailPatient + "]";
+				+ mailPatient  + "]";
+	}
+	public Users getUser() {
+		return user;
+	}
+	public void setUser(Users user) {
+		this.user = user;
 	}
 	
 	
