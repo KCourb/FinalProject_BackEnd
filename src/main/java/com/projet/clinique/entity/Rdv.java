@@ -1,5 +1,8 @@
 package com.projet.clinique.entity;
 
+
+
+
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -27,7 +30,7 @@ public class Rdv {
 	private Medecin medecin;   
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "patient")
-	private Patient patient;   
+	private Patient patient;
 	
 	
 	public long getIdRdv() {
@@ -60,6 +63,8 @@ public class Rdv {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+	
+
 	public Rdv(long idRdv, Date date, String motif, Medecin medecin, Patient patient) {
 		super();
 		this.idRdv = idRdv;
