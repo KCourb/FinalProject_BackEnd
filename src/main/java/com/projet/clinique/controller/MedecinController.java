@@ -17,6 +17,7 @@ public class MedecinController {
 	
 	@Autowired
 	private MedecinService mserv;
+	
 
 	public MedecinService getMserv() {
 		return mserv;
@@ -37,6 +38,7 @@ public class MedecinController {
 		mserv.AjoutService(m);
 		return "redirect:All";
 	}
+	
 	
 	@RequestMapping(value="/Supp", method=RequestMethod.POST)
 	public String SupprimerMedecin(@ModelAttribute("m") Medecin m, Model model) {

@@ -73,10 +73,16 @@ public class Medecin {
 	public Medecin() {
 		super();
 	}
+	
 	@Override
 	public String toString() {
-		return "Medecin [idMedecin=" + idMedecin + ", nomMedecin=" + nomMedecin + ", departement=" + departement
-				+ ", lstrdv=" + lstrdv + "]";
+		return "Medecin [idMedecin=" + idMedecin + "]";
+	}
+	public Medecin(long idMedecin, String nomMedecin, Departement departement) {
+		super();
+		this.idMedecin = idMedecin;
+		this.nomMedecin = nomMedecin;
+		this.departement = departement;
 	}
 
 	

@@ -7,10 +7,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.projet.clinique.entity.Prescription;
+import com.projet.clinique.entity.Departement;
 import com.projet.clinique.entity.Rdv;
-import com.projet.clinique.service.PrescriptionService;
+import com.projet.clinique.service.DepartementService;
 import com.projet.clinique.service.RdvService;
 
 @Controller
@@ -19,6 +18,11 @@ public class RdvController {
 	
 	@Autowired
 	private RdvService rserv;
+
+	
+	@Autowired
+	private DepartementService dserv;
+	
 
 	public RdvService getRserv() {
 		return rserv;
@@ -29,9 +33,8 @@ public class RdvController {
 	}
 	
 	@RequestMapping(value="/init", method=RequestMethod.GET)
-	public String init(@ModelAttribute("r") Rdv r) {
-		r = new Rdv();
-		return "rdv";
+	public String init(@ModelAttribute("r") Rdv r) {	
+		return "selectDep";
 	}
 	
 	@RequestMapping(value="/Ajout", method=RequestMethod.POST)
@@ -39,6 +42,7 @@ public class RdvController {
 		rserv.AjoutService(r);
 		return "redirect:All";
 	}
+	
 	
 	@RequestMapping(value="/Supp", method=RequestMethod.POST)
 	public String SupprimerRdv(@ModelAttribute("r") Rdv r, Model model) {
@@ -69,6 +73,22 @@ public class RdvController {
 		model.addAttribute("listeDesRdvs", rserv.GetAll());
 		return "rdv";
 	}
+	
+	@RequestMapping(value="/AllDep", method=RequestMethod.GET)
+	public String GetAllDepartement(ModelMap model) {
+		model.addAttribute("lstdep", dserv.GetAll());
+		return "selectDep";
+	}
+	
+	
+	@RequestMapping(value="/SelectDep", method=RequestMethod.POST)
+public String SelectDep(@ModelAttribute("d") Departement d, Model model ) {
+	model.addAttribute("ledep", dserv.GetOne(d.getIdDepartement()));
+	return "rdv";
+}
+	
+	
+	
 
 
 }
