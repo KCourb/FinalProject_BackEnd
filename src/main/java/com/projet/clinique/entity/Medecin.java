@@ -29,6 +29,8 @@ public class Medecin {
 	@OneToOne
 	@JoinColumn(name = "id_user")
 	private Users user;
+	@OneToMany(mappedBy="medecin", cascade=CascadeType.PERSIST)
+	private List<Creneau> lstdemain;
 	
 	
 	
@@ -62,6 +64,13 @@ public class Medecin {
 	public void setLstrdv(List<Rdv> lstrdv) {
 		this.lstrdv = lstrdv;
 	}
+	
+	public List<Creneau> getLstdemain() {
+		return lstdemain;
+	}
+	public void setLstdemain(List<Creneau> lstdemain) {
+		this.lstdemain = lstdemain;
+	}
 	public Medecin(long idMedecin, String nomMedecin, Departement departement, List<Rdv> lstrdv , Users user) {
 		super();
 		this.idMedecin = idMedecin;
@@ -74,6 +83,16 @@ public class Medecin {
 		super();
 	}
 	
+	public Medecin(long idMedecin, String nomMedecin, Departement departement, List<Rdv> lstrdv, Users user,
+			List<Creneau> lstdemain) {
+		super();
+		this.idMedecin = idMedecin;
+		this.nomMedecin = nomMedecin;
+		this.departement = departement;
+		this.lstrdv = lstrdv;
+		this.user = user;
+		this.lstdemain = lstdemain;
+	}
 	@Override
 	public String toString() {
 		return "Medecin [idMedecin=" + idMedecin + "]";

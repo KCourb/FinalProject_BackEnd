@@ -14,7 +14,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( ".datepicker" ).datepicker();
+    $( ".datetimepicker" ).datetimepicker();
   } );
   </script>
 <title>Insert title here</title>
@@ -44,7 +44,9 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/All">Patient</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/All">Rdv</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Rdv</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/All">Consultation</a>
 		</li>
@@ -58,48 +60,36 @@
 		</li>	
 	</ul>
 	
-	<h3>Prendre rendze-vous</h3>
-<br>	
-	<form:form action="SelectDep" method="post">
+	<h3>Sélectionnez un médecin</h3>
+<br>
+<table class="table table-striped">
+			<tr>
+				<th>idDépartement</th>
+				<th>nom Département</th>
+				<th>ListeMédecins</th>				
+			</tr>		
+				<tr>
+					<td>${ledep.idDepartement}</td>
+					<td>${ledep.nomDepartement}</td>
+					<td>${ledep.lstMedecin}</td>
+				</tr>
+		</table>
+			
+	<form:form action="SelectMed" method="post">
 		<table>
-			<tr>				
-				<td>Département<select name="idDepartement" multiple="multiple">
-						<c:forEach items="${lstdep}" var="id">
-							<option value="${id.idDepartement}">${id.nomDepartement}</option>							
+			<tr>
+							<td>Medecin<select name="idMedecin" multiple="multiple">
+						<c:forEach items="${ledep.lstMedecin}" var="id">
+							<option value="${id.idMedecin}">${id.nomMedecin}</option>
 						</c:forEach>
 				</select></td>				
-				<td>Patient<input type="text" name="patient.idPatient"></td>
+				
 				<td><input class="btn btn-primary" type="submit"
-					value="Choisir département" name="action"></td>
+					value="Ajouter un RDV" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
-	<form:form action="AllDep" method="get">
-	<input class="btn btn-primary" type="submit"
-			value="afficher tous les départements" name="action">
-	</form:form>
-	<form:form action="All" method="get">
-		<input class="btn btn-primary" type="submit"
-			value="afficher tous les dep" name="action">
-		<br>
-		<br>
-		<p>
-			<b>Liste des dep</b>
-		</p>
-		<br>
-		<table class="table table-striped">
-			<tr>
-				<th>idDepartement</th>
-				<th>nomDepartement</th>
-			</tr>
-			<c:forEach items="${listeDesDepartements}" var="de">
-				<tr>
-					<td>${de.idDepartement}</td>
-					<td>${de.nomDepartement}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</form:form>
+
 
 
 </body>

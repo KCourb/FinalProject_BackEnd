@@ -33,29 +33,31 @@
 
 	<a href="<c:url value="/logout"/>"> Logout</a>
 
-	<ul class="nav">
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/">Home</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/login">Login</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Departement/All">Departement</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Medecin/All">Medecin</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Patient/All">Patient</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Rdv/All">Rdv</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Consultation/All">Consultation</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Facture/All">Facture</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Prescription/All">Prescription</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/User/All">User</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="http://localhost:8090/Role/All">Role</a></li>
+<ul class="nav">
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/All">Departement</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/All">Medecin</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/All">Patient</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Rdv</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/All">Consultation</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/All">Facture</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/All">Prescription</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
+		</li>	
 	</ul>
 
 	<h3>Page Médecin</h3>
