@@ -52,6 +52,18 @@ public class UserService {
 		List<Users> res = dao.findAll();
 		return res;
 	}
+	
+	public long GetIdByPassword(String password) {
+		List<Users> allUs = this.GetAll();
+		long res = 1L;
+		for (Users us : allUs) {
+			if (us.getPassword().equals(password)) {
+				res = us.getIdUser();
+			}
+		}
+		
+		return res;
+	}
 
 
 }

@@ -105,15 +105,15 @@ public class HeadMasterController {
 	}
 	
 	@RequestMapping(value="/AjoutMedecin", method=RequestMethod.POST)
-	public String AjoutMedecin(@ModelAttribute("idDprt") long idDprt , @ModelAttribute("med") Medecin m ,  Model model) {
-		m.setDepartement(dserv.GetOne(idDprt));
+	public String AjoutMedecin(@ModelAttribute("idDprt") long idDprt , @ModelAttribute("med") Medecin med ,  Model model) {
+		med.setDepartement(dserv.GetOne(idDprt));
 		
 		Roles role = new Roles(1L , "MEDECIN");
 		rserv.AjoutService(role);
-		Users user = new Users(2*(m.getIdMedecin()) , m.getNomMedecin() , " {noop}0000" , true , role);
+		Users user = new Users(2*(med.getIdMedecin()) , med.getNomMedecin() , " {noop}0000" , true , role);
 		userv.AjoutService(user);
-		m.setUser(user);
-		mserv.AjoutService(m);
+		med.setUser(user);
+		mserv.AjoutService(med);
 		return "headMasterView";
 	}
 	

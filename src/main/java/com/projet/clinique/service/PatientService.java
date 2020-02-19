@@ -1,5 +1,7 @@
 package com.projet.clinique.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,5 +54,34 @@ public class PatientService {
 		List<Patient> res = dao.findAll();
 		return res;
 	}
-
+	
+	public long GetNewOddId() {
+		List<Patient> lstpat = this.GetAll();
+		lstpat.add(new Patient(1L));
+		List<Long> res = new ArrayList<>();
+		
+		for(Patient setri : lstpat) {			
+			res.add(setri.getIdPatient());
+		}
+		
+		Long nouveau = Collections.max(res);
+		
+		
+		
+		
+		if (nouveau%2 == 0) {nouveau+=1;}
+		return nouveau; 
+	
+	}
+	
+	public Patient GetByNumSecu(int x) {
+		List<Patient> allPat = this.GetAll();
+		Patient res = new Patient();
+		for (Patient pat : allPat) {
+			if (pat.getNumSecu()==x) {
+				res=pat;
+			}
+		}
+		return res;
+	}
 }

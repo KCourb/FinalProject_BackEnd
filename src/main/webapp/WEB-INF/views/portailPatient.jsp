@@ -24,7 +24,23 @@
 
 
 
+Se connecter
 
+<form action="Patient/Login" method="post">
+<table>
+<tr>
+<td>Login</td>
+<td><input type="text" name="username"></td>
+</tr>
+<tr>
+<td>Pass word</td>
+<td><input type="password" name="password"></td>
+</tr>
+<tr>
+<td><input type="submit" value="Login"></td>
+</tr>
+</table>
+</form>
 
 
 
@@ -32,7 +48,7 @@
 
 					<ul class="nav">
 
-		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/HeadMaster/AjoutDepartement">Creer un nouveau compte</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/Patient/Inscription">Creer un nouveau compte</a>
 		</li>		
 	</ul>
 
