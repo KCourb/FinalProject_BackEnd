@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +26,18 @@ public class Medecin {
 	private Departement departement;  
 	@OneToMany(mappedBy = "medecin", cascade = CascadeType.PERSIST)
 	private List<Rdv> lstrdv;
+	@OneToOne
+	@JoinColumn(name = "id_user")
+	private Users user;
 	
+	
+	
+	public Users getUser() {
+		return user;
+	}
+	public void setUser(Users user) {
+		this.user = user;
+	}
 	public long getIdMedecin() {
 		return idMedecin;
 	}
@@ -50,12 +62,13 @@ public class Medecin {
 	public void setLstrdv(List<Rdv> lstrdv) {
 		this.lstrdv = lstrdv;
 	}
-	public Medecin(long idMedecin, String nomMedecin, Departement departement, List<Rdv> lstrdv) {
+	public Medecin(long idMedecin, String nomMedecin, Departement departement, List<Rdv> lstrdv , Users user) {
 		super();
 		this.idMedecin = idMedecin;
 		this.nomMedecin = nomMedecin;
 		this.departement = departement;
 		this.lstrdv = lstrdv;
+		this.user = user;
 	}
 	public Medecin() {
 		super();
