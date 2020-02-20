@@ -15,7 +15,7 @@ public class Creneau {
 	
 	@Id
 	private long id;
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "medecin")
 	private Medecin medecin;
 	@Column

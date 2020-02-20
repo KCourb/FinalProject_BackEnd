@@ -34,6 +34,7 @@ public class Medecin {
 	@OneToOne
 	@JoinColumn(name = "id_user")
 	private Users user;
+	@JsonIgnore
 	@OneToMany(mappedBy="medecin", cascade=CascadeType.PERSIST)
 	private List<Creneau> lstdemain;
 	
