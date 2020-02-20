@@ -25,8 +25,7 @@
 	<form:form action="AjoutMedecin" method="post">
 		<table>
 			<tr>
-				<td>Introduire l'id du médecin<input type="text"
-					name="idMedecin"></td>
+
 				<td>Introduire le nom du médecin<input type="text"
 					name="nomMedecin"></td>
 

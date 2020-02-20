@@ -101,6 +101,8 @@
 			</c:forEach>
 		</table>
 	</form:form>
+	
+	<h4>${patient.toString() }</h4>
 
 
 </body>

@@ -80,11 +80,11 @@
 				<td>ID RDV<input type="text" name="idRdv"></td>
 				<td>Motif<input type="text" name="motif"></td>							
 				<td>Medecin<input type="text" name="medecin" value="${lemed.idMedecin}"></input></td>
-				<td>Créneau<select name="creneau.id" multiple="multiple">
-				<c:forEach items="${lstdispo}" var="id">
-							<option value="${id.id}">${id.horaire}</option>
-						</c:forEach></select></td>				
-				<td>Patient<input type="text" name="patient.idPatient"></td>
+<!-- 				<td>Créneau<select name="creneau.id" multiple="multiple"> -->
+<%-- 				<c:forEach items="${lstdispo}" var="id"> --%>
+<%-- 							<option value="${id.id}">${id.horaire}</option> --%>
+<%-- 						</c:forEach></select></td>				 --%>
+				<!-- <td>Patient<input type="text" name="patient.idPatient"></td> -->
 				<td><input class="btn btn-primary" type="submit"
 					value="Ajouter un RDV" name="action"></td>
 			</tr>

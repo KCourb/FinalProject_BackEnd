@@ -24,8 +24,11 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/HeadMaster/AjoutMedecin">Ajouter un médecin</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/HeadMaster/AjoutDepartement">Ajouter un département</a>
-		</li>		
+		</li>
+
 	</ul>
+	
+	<a href="<c:url value="logout" />" > Logout</a>
 
 </body>
 </html>

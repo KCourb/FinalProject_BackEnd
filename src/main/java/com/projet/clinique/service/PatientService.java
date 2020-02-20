@@ -55,22 +55,26 @@ public class PatientService {
 		return res;
 	}
 	
-	public long GetNewOddId() {
+	public long GetNewPatId() {
 		List<Patient> lstpat = this.GetAll();
-		lstpat.add(new Patient(1L));
-		List<Long> res = new ArrayList<>();
+		int n = lstpat.size();
+		long taille = n;
 		
-		for(Patient setri : lstpat) {			
-			res.add(setri.getIdPatient());
-		}
-		
-		Long nouveau = Collections.max(res);
-		
-		
-		
-		
-		if (nouveau%2 == 0) {nouveau+=1;}
-		return nouveau; 
+		return taille;
+//		lstpat.add(new Patient(1L));
+//		List<Long> res = new ArrayList<>();
+//		
+//		for(Patient setri : lstpat) {			
+//			res.add(setri.getIdPatient());
+//		}
+//		
+//		Long nouveau = Collections.max(res);
+//		
+//		
+//		
+//		
+//		if (nouveau%2 == 0) {nouveau+=1;}
+//		return nouveau; 
 	
 	}
 	

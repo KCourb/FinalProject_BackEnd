@@ -25,19 +25,19 @@
 			</tr>
 			<tr>
 				<td>Nom :</td>
-				<td>${patient.nomPatient}"</td>
+				<td>${patient.nomPatient}</td>
 			</tr>
 						<tr>
 				<td>Prenom :</td>
-				<td>${patient.prenomPatient}"</td>
+				<td>${patient.prenomPatient}</td>
 			</tr>
 						<tr>
 				<td>Sexe :</td>
-				<td>${patient.sexe}"</td>
+				<td>${patient.sexe}</td>
 			</tr>
 						<tr>
 				<td>Date de naissance :</td>
-				<td>${patient.dateNaissance}"</td>
+				<td>${patient.dateNaissance}</td>
 			</tr>
 			<tr>
 				<td>Numéro de sécurité sociale</td>
@@ -49,6 +49,9 @@
 			</tr>
 
 		</table>
+		
+		
+		<a href="http://localhost:1010/Rdv/init?id=${patient.idPatient}">Prendre un rdv</a>
 		
 		
 		

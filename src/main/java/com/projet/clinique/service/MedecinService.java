@@ -1,5 +1,7 @@
 package com.projet.clinique.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.clinique.dao.IMedecinDao;
 import com.projet.clinique.entity.Medecin;
+import com.projet.clinique.entity.Patient;
 
 @Service
 public class MedecinService {
@@ -51,6 +54,27 @@ public class MedecinService {
 	public List<Medecin> GetAll() {
 		List<Medecin> res = dao.findAll();
 		return res;
+	}
+	
+	public long GetNewMedId() {
+		List<Medecin> lstmed = this.GetAll();
+		int n = lstmed.size();
+		long taille = n;
+		
+		return taille;
+		
+//		for(Patient setri : lstpat) {			
+//			res.add(setri.getIdPatient());
+//		}
+//		
+//		Long nouveau = Collections.max(res);
+//		
+//		
+//		
+//		
+//		if (nouveau%2 == 0) {nouveau+=1;}
+//		return nouveau; 
+//	
 	}
 
 }

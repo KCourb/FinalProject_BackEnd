@@ -39,6 +39,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 		antMatchers("/HeadMaster").hasAuthority("MASTER");
 		http.formLogin().loginPage("/login").passwordParameter("password").
 		usernameParameter("username").defaultSuccessUrl("/").failureUrl("/erreur");
+		http.logout().logoutSuccessUrl("/");
 	}	
 
 }

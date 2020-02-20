@@ -76,6 +76,7 @@ public class HeadMasterController {
 
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String init() {
+
 		return "headMasterView";
 	}
 	
@@ -106,11 +107,15 @@ public class HeadMasterController {
 	
 	@RequestMapping(value="/AjoutMedecin", method=RequestMethod.POST)
 	public String AjoutMedecin(@ModelAttribute("idDprt") long idDprt , @ModelAttribute("med") Medecin med ,  Model model) {
+		
+		
+		
+		
+		med.setIdMedecin(mserv.GetNewMedId());
 		med.setDepartement(dserv.GetOne(idDprt));
 		
-		Roles role = new Roles(1L , "MEDECIN");
-		rserv.AjoutService(role);
-		Users user = new Users(2*(med.getIdMedecin()) , med.getNomMedecin() , " {noop}0000" , true , role);
+
+		Users user = new Users(2*((med.getIdMedecin())+1) , med.getNomMedecin() , " {noop}0000" , true , rserv.GetOne(1L));
 		userv.AjoutService(user);
 		med.setUser(user);
 		mserv.AjoutService(med);

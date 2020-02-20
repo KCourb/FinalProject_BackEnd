@@ -22,6 +22,8 @@ import com.projet.clinique.service.UserService;
 @RequestMapping(value="/Patient")
 public class PatientController {
 	
+	
+	
 	@Autowired
 	private PatientService pserv;
 
@@ -119,28 +121,17 @@ public class PatientController {
 	public String Inscription(@ModelAttribute("patient") Patient patient ,Model model
 		 ) {
 		
-		long idPat = pserv.GetNewOddId();
+		long idPat = pserv.GetNewPatId();
 		patient.setIdPatient(idPat);
 		
-		Roles role = new Roles(2L , "PATIENT");
-		rserv.AjoutService(role);
+		Roles role = rserv.GetOne(2L);
+
 		
 		Users user = new Users(2*idPat + 1 , patient.getNomPatient() + patient.getPrenomPatient() , "{noop}"+ patient.getNumSecu(), true , role);
-	
-		
 		userv.AjoutService(user);
-		
-		
-		patient.setUser(user);
-		
-
-		
+		patient.setUser(user);		
 		pserv.AjoutService(patient);
-
-
-		
-		
-		
+				
 		return "redirect:/Patient";
 	}
 	
