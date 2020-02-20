@@ -1,7 +1,5 @@
 package com.projet.clinique.entity;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +17,9 @@ public class Facture {
 	@Id
 	private long idFacture;	
 	@Column
-	private Date dateEdition;
+	private String dateEdition;
+	@Column
+	private double montant;
 	@Column
 	private Boolean payee;
 	@OneToOne(cascade=CascadeType.ALL)
@@ -32,11 +32,18 @@ public class Facture {
 	public void setIdFacture(long idFacture) {
 		this.idFacture = idFacture;
 	}
-	public Date getDateEdition() {
+	public String getDateEdition() {
 		return dateEdition;
 	}
-	public void setDateEdition(Date dateEdition) {
+	public void setDateEdition(String dateEdition) {
 		this.dateEdition = dateEdition;
+	}
+		
+	public double getMontant() {
+		return montant;
+	}
+	public void setMontant(double montant) {
+		this.montant = montant;
 	}
 	public Boolean getPayee() {
 		return payee;
@@ -50,22 +57,21 @@ public class Facture {
 	public void setConsultation(Consultation consultation) {
 		this.consultation = consultation;
 	}
-	public Facture(long idFacture, Date dateEdition, Boolean payee, Consultation consultation) {
+	public Facture(long idFacture, String dateEdition, double montant, Boolean payee, Consultation consultation) {
 		super();
 		this.idFacture = idFacture;
 		this.dateEdition = dateEdition;
+		this.montant = montant;
 		this.payee = payee;
 		this.consultation = consultation;
 	}
-	public Facture() {
-		super();
-	}
 	@Override
 	public String toString() {
-		return "Facture [idFacture=" + idFacture + ", dateEdition=" + dateEdition + ", payee=" + payee
-				+ ", consultation=" + consultation + "]";
+		return "Facture [idFacture=" + idFacture + ", dateEdition=" + dateEdition + ", montant=" + montant + ", payee="
+				+ payee + ", consultation=" + consultation + "]";
 	}
+	public Facture() {
+		super();
 	
-	
-
+	}
 }

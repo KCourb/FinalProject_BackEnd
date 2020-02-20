@@ -20,9 +20,9 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-<a href="<c:url value="/logout"/>"> Logout</a>
+	<a href="<c:url value="/logout"/>"> Logout</a>
 
-<ul class="nav">
+	<ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
@@ -48,35 +48,33 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
 		</li>	
 	</ul>
-	
+
 	<br>
-	
-		
-		<p>
-			<b>Médecin</b>
-		</p>
-		<br>
-		<table class="table table-striped">
-			<tr>
-				<th>id Médecin</th>
-				<th>nom Médecin</th>	
-				<th>Département</th>			
-			</tr>
-		
-				<tr>
-					<td>${lemedecin.idMedecin}</td>
-					<td>${lemedecin.nomMedecin}</td>
-					<td>${lemedecin.departement.idDepartement}</td>
-				</tr>
-		
 
 
-		</table>
-		
-		
+	<p>
+		<b>Consultation</b>
+	</p>
+	<br>
+	<table class="table table-striped">
+		<tr>
+			<th>ID</th>
+			<th>Bilan</th>
+			<th>RDV</th>
+		</tr>
 
-	
-	
+		<tr>
+			<td>${laconsultation.idConsultation}</td>
+			<td>${laconsultation.bilanPrescription}</td>
+			<td>${laconsultation.rdv.idRdv}</td>
+		</tr>
+
+	</table>
+
+ <a href="http://localhost:8090/Facture/init?id=${laconsultation.idConsultation}">Voir facture</a>
+<a href="http://localhost:8090/Prescription/init?id=${laconsultation.idConsultation}">Voir prescription</a>
+
+
 
 
 

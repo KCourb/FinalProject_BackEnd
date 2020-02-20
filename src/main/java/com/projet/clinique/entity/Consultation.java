@@ -77,7 +77,7 @@ public class Consultation {
 	@Override
 	public String toString() {
 		return "Consultation [idConsultation=" + idConsultation + ", bilanPrescription=" + bilanPrescription + ", rdv="
-				+ rdv + ", facture=" + facture + ", lstPrescription=" + lstPrescription + "]";
+				+ rdv + "]";
 	}
 	
 	
