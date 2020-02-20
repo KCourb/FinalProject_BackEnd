@@ -26,7 +26,7 @@ public class PatientController {
 		this.pserv = pserv;
 	}
 	
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="/init", method=RequestMethod.GET)
 	public String init(ModelMap model) {
 		Patient p = new Patient();
 		model.addAttribute("pat" , p);

@@ -21,7 +21,7 @@ public class Rdv {
 	@Id
 	private long idRdv;
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "demain")
+	@JoinColumn(name = "créneau")
 	private Creneau creneau;
 	@Column
 	private String motif;

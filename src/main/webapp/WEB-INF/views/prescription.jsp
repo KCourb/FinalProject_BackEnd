@@ -14,7 +14,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( ".datepicker" ).datepicker();
+    $( ".datetimepicker" ).datetimepicker();
   } );
   </script>
 <title>Insert title here</title>
@@ -30,8 +30,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-
-	<a href="<c:url value="/logout"/>"> Logout</a>
 
 <ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
@@ -54,103 +52,90 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/init">Prescription</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/init">User</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
 		</li>	
 	</ul>
+	<h3>Facture</h3>
+<br>
+		<table class="table table-striped">
+		<tr>
+			<th>ID</th>
+			<th>Bilan</th>
+			<th>RDV</th>
+		</tr>
 
-	<h3>Page Médecin</h3>
-	<br>
-	<form:form action="Ajout" method="post">
+		<tr>
+			<td>${laconsultation.idConsultation}</td>
+			<td>${laconsultation.bilanPrescription}</td>
+			<td>${laconsultation.rdv.idRdv}</td>
+		</tr>
+		</table>	
+		<form:form action="Ajout" method="post">
 		<table>
 			<tr>
-				<td>ID patient<input type="text" name="idPatient"></td>
-				<td>Nom patient<input type="text" name="nomPatient"></td>
-				<td>Prénom patient<input type="text" name="prenomPatient"></td>
-				<td>Sexe<input type="text" name="sexe"></td>
-				<td>Date de Naissance<input type="text" class="datepicker" id="datepicker1" name="dateNaissance"></td>
-				<td>Num sécu<input type="text" name="numSecu"></td>
-				<td>e-mail<input type="text" name="mailPatient"></td>
+				<td>ID Prescription<input type="text" name="idPrescription"></td>
+				<td>Description<input type="text" name="description"></td>
+				<td>Consultation<input type="text" name="consultation" value="${laconsultation.idConsultation}"></td>						
+				<td>Validée<input type="text" name="validee"></td>											
 				<td><input class="btn btn-primary" type="submit"
-					value="Ajouter un patient" name="action"></td>
+					value="Ajouter une prescription" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
-	<br>
-
+	
 	<form:form action="Update" method="post">
 		<table>
 			<tr>
-				<td>ID patient<input type="text" name="idPatient"></td>
-				<td>Nom patient<input type="text" name="nomPatient"></td>
-				<td>Prénom patient<input type="text" name="prenomPatient"></td>
-				<td>Sexe<input type="text" name="sexe"></td>
-				<td>Date de Naissance<input type="text" class="datepicker" id="datepicker2" name="dateNaissance"></td>
-				<td>Num sécu<input type="text" name="numSecu"></td>
-				<td>e-mail<input type="text" name="mailPatient"></td>
+				<td>ID Prescription<input type="text" name="idPrescription"></td>
+				<td>Description<input type="text" name="description"></td>
+				<td>Consultation<input type="text" name="consultation" value="${laconsultation.idConsultation}"></td>						
+				<td>Validée<input type="text" name="validee"></td>											
 				<td><input class="btn btn-primary" type="submit"
-					value="Mettre à jour un patient" name="action"></td>
+					value="Mettre à jour une prescription" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
-	<br>
-
-	<form:form action="Supp" method="post">
-		<table>
-			<tr>
-				<td>ID patient<input type="text" name="idPatient"></td>
-				<td><input class="btn btn-primary" type="submit"
-					value="Supprimer un patient" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
-	<br>
-
 	<form:form action="ByID" method="get">
 		<table>
 			<tr>
-				<td>ID patient<input type="text" name="idPatient"></td>
+				<td>ID prescription<input type="text"
+					name="idPrescription"></td>
 				<td><input class="btn btn-primary" type="submit"
-					value="Rechercher un patient par ID" name="action"></td>
+					value="Rechercher une prescription" name="action"></td>
 			</tr>
-		</table>
+		</table>		
 	</form:form>
-
-	<br>
+	
+	<a href="http://localhost:8090/Consultation/init">Consultation</a>
+	
 	<form:form action="All" method="get">
 		<input class="btn btn-primary" type="submit"
-			value="afficher tous les patients" name="action">
+			value="afficher toutes les prescriptions" name="action">
 		<br>
 		<br>
 		<p>
-			<b>Liste des patients </b>
+			<b>Liste des prescriptions </b>
 		</p>
 		<br>
 		<table class="table table-striped">
 			<tr>
-				<th>ID patient</th>
-				<th>nom patient</th>
-				<th>prénom patient</th>
-				<th>sexe</th>
-				<th>date de naissance</th>
-				<th>num sécu</th>
-				<th>email</th>
+			<th>ID Prescription</th>
+			<th>Description</th>
+			<th>Consultation</th>
+			<th>Validée</th>
 			</tr>
-			<c:forEach items="${listeDesPatients}" var="pa">
+			<c:forEach items="${listeDesPrescriptions}" var="pe">
 				<tr>
-					<td>${pa.idPatient}</td>
-					<td>${pa.nomPatient}</td>
-					<td>${pa.prenomPatient}</td>
-					<td>${pa.sexe}</td>
-					<td>${pa.dateNaissance}</td>
-					<td>${pa.numSecu}</td>
-					<td>${pa.mailPatient}</td>
+					<td>${pe.idPrescription}</td>
+					<td>${pe.description}</td>
+					<td>${pe.consultation.idConsultation}</td>	
+					<td>${pe.validee}</td>				
 				</tr>
 			</c:forEach>
 		</table>
 	</form:form>
-
 
 </body>
 </html>

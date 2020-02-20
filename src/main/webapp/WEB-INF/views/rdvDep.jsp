@@ -38,21 +38,21 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/All">Departement</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/init">Departement</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/All">Medecin</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/init">Medecin</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/All">Patient</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/init">Patient</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Rdv</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Créneau</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/All">Consultation</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/init">Consultation</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/All">Facture</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/init">Facture</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/All">Prescription</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/init">Prescription</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
 		</li>
@@ -79,29 +79,7 @@
 	<input class="btn btn-primary" type="submit"
 			value="afficher tous les départements" name="action">
 	</form:form>
-	<form:form action="All" method="get">
-		<input class="btn btn-primary" type="submit"
-			value="afficher tous les dep" name="action">
-		<br>
-		<br>
-		<p>
-			<b>Liste des dep</b>
-		</p>
-		<br>
-		<table class="table table-striped">
-			<tr>
-				<th>idDepartement</th>
-				<th>nomDepartement</th>
-			</tr>
-			<c:forEach items="${listeDesDepartements}" var="de">
-				<tr>
-					<td>${de.idDepartement}</td>
-					<td>${de.nomDepartement}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</form:form>
-
+	
 
 </body>
 </html>

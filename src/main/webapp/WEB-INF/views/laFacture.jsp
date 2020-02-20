@@ -20,9 +20,9 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-<a href="<c:url value="/logout"/>"> Logout</a>
+	<a href="<c:url value="/logout"/>"> Logout</a>
 
-<ul class="nav">
+	<ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
@@ -48,35 +48,46 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
 		</li>	
 	</ul>
-	
+
 	<br>
-	
+
+
+	<p>
+		<b>Facture</b>
+	</p>
+	<br>
+	<table class="table table-striped">
+		<tr>
+			<th>ID Facture</th>
+			<th>Date d'édition</th>
+			<th>Montant</th>
+			<th>Consultation</th>
+			<th>Payée</th>
+		</tr>
+
+		<tr>
+			<td>${lafacture.idFacture}</td>
+			<td>${lafacture.dateEdition}</td>
+			<td>${lafacture.montant}</td>
+			<td>${lafacture.consultation}</td>
+			<td>${lafacture.payee}</td>
+		</tr>
 		
-		<p>
-			<b>Médecin</b>
-		</p>
-		<br>
-		<table class="table table-striped">
+
+	</table>
+
+<form:form action="Txt" method="get">
+	<table>
 			<tr>
-				<th>id Médecin</th>
-				<th>nom Médecin</th>	
-				<th>Département</th>			
+				<td>ID facture<input type="text"  name="idFacture" value="${lafacture.idFacture}"></td>
+<!-- 				<td>ID facture<input type="text"  name="idFacture"></td> -->
+				<td><input class="btn btn-primary" type="submit" value="Exporter la facture en txt" name="action"></td>
 			</tr>
-		
-				<tr>
-					<td>${lemedecin.idMedecin}</td>
-					<td>${lemedecin.nomMedecin}</td>
-					<td>${lemedecin.departement.idDepartement}</td>
-				</tr>
-		
-
-
 		</table>
-		
-		
+	</form:form>
 
-	
-	
+<a href="http://localhost:8090/Consultation/init">Consultation</a>
+
 
 
 
