@@ -39,7 +39,6 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
 		</li>
 
-	
 	</ul>
 	
 	<h3>Prendre rendez-vous</h3>
@@ -61,12 +60,16 @@
 <%-- 	<form:form action="AllDep" method="get">
 	<input class="btn btn-primary" type="submit"
 			value="afficher tous les départements" name="action">
+<<<<<<< HEAD
 	</form:form> --%>
 	
 	<h4>${patient.idPatient}</h4>
-	
+
+
+
 
 	
+
 
 
 

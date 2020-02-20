@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //
 
 @Entity
@@ -19,6 +21,8 @@ public class Departement {
 	private long idDepartement;
 	@Column
 	private String nomDepartement;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "departement", cascade=CascadeType.PERSIST)
 	private List<Medecin> lstMedecin;  
 	
