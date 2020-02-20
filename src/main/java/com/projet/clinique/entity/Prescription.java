@@ -21,7 +21,7 @@ public class Prescription {
 	private String description;
 	@Column
 	private Boolean validee;
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "consultation")
 	private Consultation consultation;   
 	

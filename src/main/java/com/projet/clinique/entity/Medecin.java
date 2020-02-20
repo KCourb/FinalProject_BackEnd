@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Medecin {
@@ -21,14 +23,18 @@ public class Medecin {
 	private long idMedecin;
 	@Column
 	private String nomMedecin;
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "departement")
-	private Departement departement;  
+	private Departement departement;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "medecin", cascade = CascadeType.PERSIST)
 	private List<Rdv> lstrdv;
 	@OneToOne
 	@JoinColumn(name = "id_user")
 	private Users user;
+	@JsonIgnore
 	@OneToMany(mappedBy="medecin", cascade=CascadeType.PERSIST)
 	private List<Creneau> lstdemain;
 	

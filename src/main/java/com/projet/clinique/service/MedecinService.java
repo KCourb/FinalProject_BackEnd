@@ -56,6 +56,15 @@ public class MedecinService {
 		return res;
 	}
 	
+
+	public List<Medecin> getAllByFkDept(Long id){
+		
+		List<Medecin> meds = dao.getAllByFkDept(id);
+		
+		return meds;
+		
+	}
+
 	public long GetNewMedId() {
 		List<Medecin> lstmed = this.GetAll();
 		int n = lstmed.size();
@@ -75,6 +84,7 @@ public class MedecinService {
 //		if (nouveau%2 == 0) {nouveau+=1;}
 //		return nouveau; 
 //	
+
 	}
 	
 	public Medecin GetByNom(String nom) {
