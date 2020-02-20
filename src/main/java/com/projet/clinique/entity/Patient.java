@@ -1,10 +1,10 @@
 package com.projet.clinique.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,11 +20,14 @@ public class Patient {
 	@Column
 	private String sexe;
 	@Column
-	private Date dateNaissance;
+	private String dateNaissance;
 	@Column
 	private int numSecu;
 	@Column
 	private String mailPatient;
+	@OneToOne
+	@JoinColumn(name = "id_user")
+	private Users user;
 	
 	
 	public long getIdPatient() {
@@ -51,10 +54,10 @@ public class Patient {
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 	public int getNumSecu() {
@@ -69,8 +72,8 @@ public class Patient {
 	public void setMailPatient(String mailPatient) {
 		this.mailPatient = mailPatient;
 	}
-	public Patient(long idPatient, String nomPatient, String prenomPatient, String sexe, Date dateNaissance,
-			int numSecu, String mailPatient) {
+	public Patient(long idPatient, String nomPatient, String prenomPatient, String sexe, String dateNaissance,
+			int numSecu, String mailPatient , Users user) {
 		super();
 		this.idPatient = idPatient;
 		this.nomPatient = nomPatient;
@@ -79,6 +82,7 @@ public class Patient {
 		this.dateNaissance = dateNaissance;
 		this.numSecu = numSecu;
 		this.mailPatient = mailPatient;
+		this.user = user;
 	}
 	public Patient() {
 		super();
@@ -87,8 +91,20 @@ public class Patient {
 	public String toString() {
 		return "Patient [idPatient=" + idPatient + ", nomPatient=" + nomPatient + ", prenomPatient=" + prenomPatient
 				+ ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", numSecu=" + numSecu + ", mailPatient="
-				+ mailPatient + "]";
+				+ mailPatient  + "]";
 	}
+	public Users getUser() {
+		return user;
+	}
+	public void setUser(Users user) {
+		this.user = user;
+	}
+	public Patient(long idPatient) {
+		super();
+		this.idPatient = idPatient;
+	}
+
+	
 	
 	
 

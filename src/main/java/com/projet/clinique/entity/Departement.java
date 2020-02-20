@@ -47,6 +47,17 @@ public class Departement {
 	public Departement() {
 		super();
 	}
+	public Departement(long idDepartement, String nomDepartement, List<Medecin> lstMedecin) {
+		super();
+		this.idDepartement = idDepartement;
+		this.nomDepartement = nomDepartement;
+		this.lstMedecin = lstMedecin;
+	}
+	public Departement(long idDepartement, String nomDepartement) {
+		super();
+		this.idDepartement = idDepartement;
+		this.nomDepartement = nomDepartement;
+	}
 	@Override
 	public String toString() {
 		return "Departement [idDepartement=" + idDepartement + ", nomDepartement=" + nomDepartement + ", lstMedecin="

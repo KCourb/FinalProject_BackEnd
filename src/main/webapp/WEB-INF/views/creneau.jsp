@@ -6,6 +6,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( ".datepicker" ).datepicker();
+  } );
+  </script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,8 +31,6 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-	<a href="<c:url value="/logout"/>"> Logout</a>
-
 <ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
@@ -33,7 +42,7 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/All">Patient</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Demain/init">Créneau</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Rdv</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
 		</li>
@@ -48,82 +57,75 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
 		</li>	
 	</ul>
-
-	<h3>Page Médecin</h3>
-	<br>
-	<form:form action="Ajout" method="post">
+	
+	<h3>Créneaux</h3>
+<br>
+<table class="table table-striped">
+			
+		
+		<form:form action="Ajout" method="post">
 		<table>
 			<tr>
-				<td>ID médecin<input type="text" name="idMedecin"></td>
-				<td>Nom médecin<input type="text" name="nomMedecin"></td>
-				<td>Département<input type="text" name="departement.idDepartement"></td>
+				<td>ID<input type="text" name="id"></td>
+				<td>Médecin<input type="text" name="medecin"></td>											
+				<td>Horaire<input type="text" name="horaire"></td>		
+				<td>Réservé<input type="text" name="reserve"></td>
 				<td><input class="btn btn-primary" type="submit"
-					value="Ajouter un médecin" name="action"></td>
+					value="Ajouter un Créneau" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
-	<br>
-
+	
 	<form:form action="Update" method="post">
 		<table>
 			<tr>
-				<td>ID médecin<input type="text" name="idMedecin"></td>
-				<td>Nom médecin<input type="text" name="nomMedecin"></td>
-				<td>Département<input type="text" name="departement.idDepartement"></td>
+				<td>ID<input type="text" name="id"></td>
+				<td>Médecin<input type="text" name="medecin"></td>											
+				<td>Horaire<input type="text" name="horaire"></td>		
+				<td>Réservé<input type="text" name="reserve"></td>
 				<td><input class="btn btn-primary" type="submit"
-					value="Mettre à jour un médecin" name="action"></td>
+					value="Mettre à jour un Créneau" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
-	<br>
-
+	
 	<form:form action="Supp" method="post">
 		<table>
 			<tr>
-				<td>ID médecin<input type="text" name="idMedecin"></td>
+				<td>ID<input type="text" name="id"></td>
 				<td><input class="btn btn-primary" type="submit"
-					value="Supprimer un médecin" name="action"></td>
+					value="Supprimer un Créneau" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
-	<br>
-
-	<form:form action="ByID" method="get">
-		<table>
-			<tr>
-				<td>ID médecin<input type="text" name="idMedecin"></td>
-				<td><input class="btn btn-primary" type="submit"
-					value="Rechercher un médecin par ID" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
-
-	<br>
+	
 	<form:form action="All" method="get">
 		<input class="btn btn-primary" type="submit"
-			value="afficher tous les médecins" name="action">
+			value="afficher tous les créneaux" name="action">
 		<br>
 		<br>
 		<p>
-			<b>Liste des médecins </b>
+			<b>Liste des créneaux </b>
 		</p>
 		<br>
 		<table class="table table-striped">
 			<tr>
-				<th>id Médecin</th>
-				<th>nom Médecin</th>
-				<th>Département</th>
+				<th>ID</th>
+				<th>Médecin</th>
+				<th>Horaire</th>
+				<th>Réservé</th>
+				
 			</tr>
-			<c:forEach items="${listeDesMedecins}" var="me">
+			<c:forEach items="${listeDesCreneaux}" var="cr">
 				<tr>
-					<td>${me.idMedecin}</td>
-					<td>${me.nomMedecin}</td>
-					<td>${me.departement.idDepartement}</td>
+					<td>${cr.id}</td>
+					<td>${cr.medecin}</td>
+					<td>${cr.horaire}</td>
+					<td>${cr.reserve}</td>					
 				</tr>
 			</c:forEach>
 		</table>
 	</form:form>
-
-
+	
 </body>
 </html>

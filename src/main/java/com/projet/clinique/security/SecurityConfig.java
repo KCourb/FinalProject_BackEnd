@@ -27,18 +27,19 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(datasourceBean).
-		usersByUsernameQuery(" select username , password , activated from users where username=?").
+		usersByUsernameQuery(" select username , password , activated , id_role from users where username=?").
 		authoritiesByUsernameQuery(
-				" select u.username , r.rolename from users u , roles r where u.idUser = r.idUser and u.username=?");
+				" select u.username , r.rolename from users u , roles r where u.id_role = r.id_role and u.username=?");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.httpBasic().and().authorizeRequests().
-		antMatchers("/Client").hasAuthority("ADMIN");
+		antMatchers("/HeadMaster").hasAuthority("MASTER");
 		http.formLogin().loginPage("/login").passwordParameter("password").
 		usernameParameter("username").defaultSuccessUrl("/").failureUrl("/erreur");
+		http.logout().logoutSuccessUrl("/");
 	}	
 
 }

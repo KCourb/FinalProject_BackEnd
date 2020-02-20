@@ -70,5 +70,13 @@ public class MedecinController {
 		return "medecin";
 	}
 	
+	@RequestMapping(value="/HeadMaster", method=RequestMethod.GET)
+	public String getHeadMaster(ModelMap model) {
+		model.addAttribute("Medecin", mserv.GetAll());
+		return "headMasterView";
+	}
+	
+	
+	
 
 }
