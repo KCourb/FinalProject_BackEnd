@@ -1,5 +1,7 @@
 package com.projet.clinique.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projet.clinique.entity.Consultation;
+import com.projet.clinique.entity.Rdv;
 import com.projet.clinique.service.ConsultationService;
+import com.projet.clinique.service.RdvService;
 
 @Controller
 @RequestMapping(value="/Consultation")
@@ -17,6 +21,9 @@ public class ConsultationController {
 	
 	@Autowired
 	private ConsultationService cserv;
+	
+	@Autowired
+	private RdvService rserv;
 
 	public ConsultationService getCserv() {
 		return cserv;
@@ -27,8 +34,7 @@ public class ConsultationController {
 	}
 	
 	@RequestMapping(value="/init", method=RequestMethod.GET)
-	public String init(@ModelAttribute("co") Consultation co) {
-		co = new Consultation();
+	public String init(@ModelAttribute("co") Consultation co, Model model, HttpServletRequest req) {
 		return "consultation";
 	}
 	
@@ -68,6 +74,23 @@ public class ConsultationController {
 		return "consultation";
 	}
 	
+	@RequestMapping(value="/AllRdv", method=RequestMethod.GET)
+	public String GetAllRDV(ModelMap model) {
+		model.addAttribute("lstrdv", rserv.GetAll());
+		return "consultation";
+	}
+	
+	@RequestMapping(value="/redirectFacture", method=RequestMethod.GET)
+	public String redirectFacture(@ModelAttribute("co") Consultation co, Model model) {
+		Consultation consult = cserv.GetOne(co.getIdConsultation()); 
+		model.addAttribute("laconsultation", consult);
+		return "redirect:Facture/init";
+	}
+	
+	@RequestMapping(value="/redirectPrescription", method=RequestMethod.GET)
+	public String redirectPrescription() {		
+		return "prescription";
+	}
 	
 	
 	

@@ -38,26 +38,8 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/All">Departement</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/All">Medecin</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/All">Patient</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Rdv</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/All">Consultation</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/All">Facture</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/All">Prescription</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
-		</li>	
+
+	
 	</ul>
 	
 	<h3>Prendre rendez-vous</h3>
@@ -79,30 +61,10 @@
 	<input class="btn btn-primary" type="submit"
 			value="afficher tous les départements" name="action">
 	</form:form>
-	<form:form action="All" method="get">
-		<input class="btn btn-primary" type="submit"
-			value="afficher tous les dep" name="action">
-		<br>
-		<br>
-		<p>
-			<b>Liste des dep</b>
-		</p>
-		<br>
-		<table class="table table-striped">
-			<tr>
-				<th>idDepartement</th>
-				<th>nomDepartement</th>
-			</tr>
-			<c:forEach items="${listeDesDepartements}" var="de">
-				<tr>
-					<td>${de.idDepartement}</td>
-					<td>${de.nomDepartement}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</form:form>
+
 	
-	<h4>${patient.toString() }</h4>
+
+
 
 
 </body>

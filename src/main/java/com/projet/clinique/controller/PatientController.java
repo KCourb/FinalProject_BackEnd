@@ -26,40 +26,28 @@ public class PatientController {
 	
 	@Autowired
 	private PatientService pserv;
-
 	public PatientService getPserv() {
 		return pserv;
 	}
-
 	public void setPserv(PatientService pserv) {
 		this.pserv = pserv;
 	}
 	
+
 	@Autowired
 	private RoleService rserv;
-	
-	
-	
-	
-
 	public RoleService getRserv() {
 		return rserv;
 	}
-
 	public void setRserv(RoleService rserv) {
 		this.rserv = rserv;
 	}
+	
 	@Autowired
-	private UserService userv;
-	
-	
-	
-	
-	
+	private UserService userv;	
 	public UserService getUserv() {
 		return userv;
 	}
-
 	public void setUserv(UserService userv) {
 		this.userv = userv;
 	}
@@ -122,22 +110,14 @@ public class PatientController {
 		 ) {
 		
 		long idPat = pserv.GetNewPatId();
-		patient.setIdPatient(idPat);
-		
-		Roles role = rserv.GetOne(2L);
-
-		
+		patient.setIdPatient(idPat);		
+		Roles role = rserv.GetOne(2L);	
 		Users user = new Users(2*idPat + 1 , patient.getNomPatient() + patient.getPrenomPatient() , "{noop}"+ patient.getNumSecu(), true , role);
 		userv.AjoutService(user);
 		patient.setUser(user);		
-		pserv.AjoutService(patient);
-				
+		pserv.AjoutService(patient);				
 		return "redirect:/Patient";
 	}
-	
-	
-	
-	
 	
 	
 	@RequestMapping(value="/Supp", method=RequestMethod.POST)

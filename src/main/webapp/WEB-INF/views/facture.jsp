@@ -30,10 +30,8 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-		
-		<a href="<c:url value="/logout"/>"> Logout</a>
 
-	<ul class="nav">
+<ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
@@ -54,45 +52,94 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/init">Prescription</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/init">User</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
 		</li>	
 	</ul>
-	
-	<h3>Sélectionnez un médecin</h3>
+	<h3>Facture</h3>
 <br>
-<table class="table table-striped">
-			<tr>
-				<th>idDépartement</th>
-				<th>nom Département</th>
-				<th>ListeMédecins</th>				
-			</tr>		
-				<tr>
-					<td>${ledep.idDepartement}</td>
-					<td>${ledep.nomDepartement}</td>
-					<td>${ledep.lstMedecin}</td>
-				</tr>
-		</table>
-			
-	<form:form action="SelectMed" method="post">
+<!-- 		<table class="table table-striped"> -->
+<!-- 		<tr> -->
+<!-- 			<th>ID</th> -->
+<!-- 			<th>Bilan</th> -->
+<!-- 			<th>RDV</th> -->
+<!-- 		</tr> -->
+
+<!-- 		<tr> -->
+<%-- 			<td>${laconsultation.idConsultation}</td> --%>
+<%-- 			<td>${laconsultation.bilanPrescription}</td> --%>
+<%-- 			<td>${laconsultation.rdv.idRdv}</td> --%>
+<!-- 		</tr> -->
+<!-- 		</table>	 -->
+		<form:form action="Ajout" method="post">
 		<table>
 			<tr>
-							<td>Medecin<select name="idMedecin" multiple="multiple">
-						<c:forEach items="${ledep.lstMedecin}" var="id">
-							<option value="${id.idMedecin}">${id.nomMedecin}</option>
-						</c:forEach>
-				</select></td>				
-				
+				<td>ID Facture<input type="text" name="idFacture"></td>
+				<td>Date d'édition<input type="text" name="dateEdition"></td>
+				<td>Consultation<input type="text" name="consultation" value="${laconsultation.idConsultation}"></td>						
+				<td>Montant<input type="text" name="montant"></td>
+				<td>Payée<input type="text" name="payee"></td>											
 				<td><input class="btn btn-primary" type="submit"
-					value="Sélectionner un médecin" name="action"></td>
+					value="Ajouter une facture" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
 	
-		<h4>${patient.toString() }</h4>
-
-
+	<form:form action="Update" method="post">
+		<table>
+			<tr>
+				<td>ID Facture<input type="text" name="idFacture"></td>
+				<td>Date d'édition<input type="text" name="dateEdition"></td>
+				<td>Consultation<input type="text" name="consultation" value="${laconsultation.idConsultation}"></td>
+				<td>Montant<input type="text" name="montant"></td>						
+				<td>Payée<input type="text" name="payee"></td>											
+				<td><input class="btn btn-primary" type="submit"
+					value="Mettre à jour une facture" name="action"></td>
+			</tr>
+		</table>
+	</form:form>
+	<form:form action="ByID" method="get">
+		<table>
+			<tr>
+				<td>ID facture<input type="text"
+					name="idFacture"></td>
+				<td><input class="btn btn-primary" type="submit" value="Rechercher une facture" name="action"></td>
+			</tr>
+		</table>		
+	</form:form>
+	
+	<a href="http://localhost:8090/Consultation/init">Consultation</a>
+	
+	
+	<form:form action="All" method="get">
+		<input class="btn btn-primary" type="submit"
+			value="afficher toutes les factures" name="action">
+		<br>
+		<br>
+		<p>
+			<b>Liste des factures </b>
+		</p>
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<th>ID Facture</th>
+			<th>Date d'édition</th>
+			<th>Montant</th>
+			<th>Consultation</th>
+			<th>Payée</th>
+			</tr>
+			<c:forEach items="${listeDesFactures}" var="fa">
+				<tr>
+					<td>${fa.idFacture}</td>
+					<td>${fa.dateEdition}</td>
+					<td>${fa.consultation.idConsultation}</td>	
+					<td>${fa.montant}</td>
+					<td>${fa.payee}</td>					
+				</tr>
+			</c:forEach>
+		</table>
+	</form:form>
 
 </body>
 </html>

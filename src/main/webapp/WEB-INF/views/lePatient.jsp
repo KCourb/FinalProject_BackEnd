@@ -25,7 +25,7 @@
 <ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">login</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/All">Departement</a>
 		</li>
@@ -33,7 +33,9 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/All">Patient</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/All">Rdv</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Créneau</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/All">Consultation</a>
 		</li>
@@ -44,7 +46,7 @@
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/All">User</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/All">Role</a>
-		</li>
+		</li>	
 	</ul>
 	
 	<br>
