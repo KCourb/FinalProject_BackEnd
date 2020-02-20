@@ -26,7 +26,7 @@ public class DepartementController {
 		this.dserv = dserv;
 	}
 	
-	@RequestMapping(value="/init", method=RequestMethod.GET)
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public String init(@ModelAttribute("d") Departement d) {
 		d = new Departement();
 		return "departement";

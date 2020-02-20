@@ -1,5 +1,11 @@
 package com.projet.clinique.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.projet.clinique.entity.Facture;
+import com.projet.clinique.entity.Medecin;
 import com.projet.clinique.entity.Prescription;
+import com.projet.clinique.service.ConsultationService;
 import com.projet.clinique.service.PrescriptionService;
 
 @Controller
@@ -17,6 +26,9 @@ public class PrescriptionController {
 	
 	@Autowired
 	private PrescriptionService pserv;
+	
+	@Autowired
+	private ConsultationService  cserv;
 
 	public PrescriptionService getPserv() {
 		return pserv;
@@ -27,8 +39,12 @@ public class PrescriptionController {
 	}
 	
 	@RequestMapping(value="/init", method=RequestMethod.GET)
-	public String init(@ModelAttribute("p") Prescription p) {
-		p = new Prescription();
+	public String init(@ModelAttribute("p") Prescription p, HttpServletRequest req, Model model) {
+		model.addAttribute("listeDesPrescriptions", pserv.GetAll());
+		Long idConsultation = Long.parseLong(req.getParameter("id"));
+		model.addAttribute("laconsultation", cserv.GetOne(idConsultation));
+		Medecin medecin = ((cserv.GetOne(idConsultation)).getRdv()).getMedecin();
+		model.addAttribute("medecin", medecin);
 		return "prescription";
 	}
 	
@@ -67,5 +83,7 @@ public class PrescriptionController {
 		model.addAttribute("listeDesPrescriptions", pserv.GetAll());
 		return "prescription";
 	}
+	
+	
 
 }

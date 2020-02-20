@@ -1,5 +1,7 @@
 package com.projet.clinique.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projet.clinique.entity.Medecin;
+import com.projet.clinique.entity.Patient;
 import com.projet.clinique.service.MedecinService;
 
 @Controller
@@ -17,6 +20,7 @@ public class MedecinController {
 	
 	@Autowired
 	private MedecinService mserv;
+	
 
 	public MedecinService getMserv() {
 		return mserv;
@@ -26,17 +30,33 @@ public class MedecinController {
 		this.mserv = mserv;
 	}
 	
-	@RequestMapping(value="/init", method=RequestMethod.GET)
-	public String init(@ModelAttribute("m") Medecin m) {
-		m = new Medecin();
-		return "medecin";
+
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public String init2(ModelMap model) {	
+		String username = null;
+		model.addAttribute("username" , username );
+		return "portailMedecin";
 	}
+	
+	
+	@RequestMapping(value="/Login", method=RequestMethod.POST)
+	public String init(@ModelAttribute("username") String username , ModelMap model) {
+		
+		
+		Medecin medecin = mserv.GetByNom(username);
+		model.addAttribute("medecin", medecin);		
+		return "medecinConnecte";
+	}
+	
+	
+	
 	
 	@RequestMapping(value="/Ajout", method=RequestMethod.POST)
 	public String AjoutMedecin(@ModelAttribute("m") Medecin m, Model model) {
 		mserv.AjoutService(m);
 		return "redirect:All";
 	}
+	
 	
 	@RequestMapping(value="/Supp", method=RequestMethod.POST)
 	public String SupprimerMedecin(@ModelAttribute("m") Medecin m, Model model) {
@@ -67,6 +87,14 @@ public class MedecinController {
 		model.addAttribute("listeDesMedecins", mserv.GetAll());
 		return "medecin";
 	}
+	
+	@RequestMapping(value="/HeadMaster", method=RequestMethod.GET)
+	public String getHeadMaster(ModelMap model) {
+		model.addAttribute("Medecin", mserv.GetAll());
+		return "headMasterView";
+	}
+	
+	
 	
 
 }

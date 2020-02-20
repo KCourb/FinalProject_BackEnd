@@ -1,6 +1,7 @@
 package com.projet.clinique.entity;
 
-import java.util.Date;
+
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -18,8 +20,9 @@ public class Rdv {
 	
 	@Id
 	private long idRdv;
-	@Column
-	private Date date;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "créneau")
+	private Creneau creneau;
 	@Column
 	private String motif;
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -27,7 +30,7 @@ public class Rdv {
 	private Medecin medecin;   
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "patient")
-	private Patient patient;   
+	private Patient patient;
 	
 	
 	public long getIdRdv() {
@@ -36,11 +39,12 @@ public class Rdv {
 	public void setIdRdv(long idRdv) {
 		this.idRdv = idRdv;
 	}
-	public Date getDate() {
-		return date;
+	
+	public Creneau getCreneau() {
+		return creneau;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCreneau(Creneau creneau) {
+		this.creneau = creneau;
 	}
 	public String getMotif() {
 		return motif;
@@ -60,22 +64,25 @@ public class Rdv {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-	public Rdv(long idRdv, Date date, String motif, Medecin medecin, Patient patient) {
+	public Rdv(long idRdv, Creneau creneau, String motif, Medecin medecin, Patient patient) {
 		super();
 		this.idRdv = idRdv;
-		this.date = date;
+		this.creneau = creneau;
 		this.motif = motif;
 		this.medecin = medecin;
 		this.patient = patient;
 	}
 	public Rdv() {
 		super();
+		
 	}
 	@Override
 	public String toString() {
-		return "Rdv [idRdv=" + idRdv + ", date=" + date + ", motif=" + motif + ", medecin=" + medecin + ", patient="
-				+ patient + "]";
+		return "Rdv [idRdv=" + idRdv + ", creneau=" + creneau + ", motif=" + motif + ", medecin=" + medecin
+				+ ", patient=" + patient + "]";
 	}
+	
+
 	
 	
 	

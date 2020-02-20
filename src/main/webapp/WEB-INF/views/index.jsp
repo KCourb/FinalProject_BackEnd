@@ -11,9 +11,7 @@
 </head>
 <body>
 
-<a href="Client">Client</a>
-<a href="Plat">Plat</a>
-<a href="Menu">Menu</a>
+TEST
 
 
 
