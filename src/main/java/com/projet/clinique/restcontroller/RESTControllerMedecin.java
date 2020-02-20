@@ -1,5 +1,6 @@
 package com.projet.clinique.restcontroller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projet.clinique.entity.Departement;
 import com.projet.clinique.entity.Medecin;
 import com.projet.clinique.service.MedecinService;
+
+
 
 @CrossOrigin
 @RequestMapping(value="/MedecinREST")
@@ -69,6 +73,20 @@ public ResponseEntity<Object> getAll() {
 	return new ResponseEntity<> (srv.GetAll(), HttpStatus.OK);
 	
 	
+}
+
+@RequestMapping(value="/recherchefk", method=RequestMethod.POST)
+public ResponseEntity<Object> getAllByfkDept(@RequestBody Departement obj) {
+	
+	List<Medecin> oui = srv.getAllByFkDept(obj.getIdDepartement());
+	
+	
+
+	
+	
+	
+	
+	return new ResponseEntity<> (oui, HttpStatus.OK);
 }
 
 }

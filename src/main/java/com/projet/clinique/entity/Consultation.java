@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Consultation {
@@ -21,10 +23,12 @@ public class Consultation {
 	private String bilanPrescription;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "rdv")
-	private Rdv rdv;  
+	private Rdv rdv;
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "facture")
-	private Facture facture;  
+	private Facture facture;
+	@JsonIgnore
 	@OneToMany(mappedBy = "consultation", cascade = CascadeType.PERSIST)
 	private List<Prescription> lstPrescription;   
 	

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.clinique.dao.IFactureDao;
 import com.projet.clinique.entity.Facture;
+import com.projet.clinique.entity.Medecin;
 
 @Service
 public class FactureService {
@@ -44,13 +45,20 @@ public class FactureService {
 		return dao.getOne(id);
 	}
 	
-	public void Update(Facture obj) {
-		dao.saveAndFlush(obj);
+	public Facture Update(Facture obj) {
+		return dao.saveAndFlush(obj);
 	}
 	
 	public List<Facture> GetAll() {
 		List<Facture> res = dao.findAll();
 		return res;
+	}
+	
+public Facture getAllByFkDept(Long id){
+		
+		Facture facs = dao.getAllByFkDept(id);
+		
+		return facs;
 	}
 	
 	

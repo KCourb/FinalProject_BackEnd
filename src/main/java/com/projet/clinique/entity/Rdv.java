@@ -22,10 +22,10 @@ public class Rdv {
 	private Date date;
 	@Column
 	private String motif;
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "medecin")
 	private Medecin medecin;   
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "patient")
 	private Patient patient;   
 	

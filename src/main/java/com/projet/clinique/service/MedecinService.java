@@ -52,5 +52,12 @@ public class MedecinService {
 		List<Medecin> res = dao.findAll();
 		return res;
 	}
+	
+	public List<Medecin> getAllByFkDept(Long id){
+		
+		List<Medecin> meds = dao.getAllByFkDept(id);
+		
+		return meds;
+	}
 
 }
