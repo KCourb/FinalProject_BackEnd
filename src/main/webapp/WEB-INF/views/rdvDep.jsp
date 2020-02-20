@@ -44,7 +44,8 @@
 	
 	<h3>Prendre rendez-vous</h3>
 <br>	
-	<form:form action="SelectDep" method="post">
+	<form:form action="SelectDep?idPat=${patient.idPatient}" method="post"> 
+<%-- 	<form:form action="SelectDep" method="post"> --%>
 		<table>
 			<tr>				
 				<td>Département<select name="idDepartement" multiple="multiple">
@@ -57,10 +58,13 @@
 			</tr>
 		</table>
 	</form:form>
-	<form:form action="AllDep" method="get">
+<%-- 	<form:form action="AllDep" method="get">
 	<input class="btn btn-primary" type="submit"
 			value="afficher tous les départements" name="action">
-	</form:form>
+	</form:form> --%>
+	
+	<h4>${patient.idPatient}</h4>
+	
 
 	
 

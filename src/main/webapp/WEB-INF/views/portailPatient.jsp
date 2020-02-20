@@ -50,8 +50,13 @@ Se connecter
 
 		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/Patient/Inscription">Creer un nouveau compte</a>
 		</li>		
+		<li class="nav-item"><a class="nav-link" href="http://localhost:1010">Retour au menu/a>
+		</li>
 	</ul>
 
+<br> <br> 
+
+<a href="http://localhost:1010">Retour au menu</a>
 
 
 

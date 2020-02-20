@@ -25,28 +25,7 @@
 	<ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/init">Departement</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/init">Medecin</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/init">Patient</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Créneau</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/init">Consultation</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/init">Facture</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/init">Prescription</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/init">User</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
-		</li>	
+			
 	</ul>
 
 	<br>
@@ -88,7 +67,7 @@
 
 <a href="http://localhost:8090/Consultation/init">Consultation</a>
 
-
+<%-- <h3>${laconsultation.toString()}</h3> --%>
 
 
 </body>

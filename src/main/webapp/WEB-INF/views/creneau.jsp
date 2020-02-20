@@ -32,42 +32,22 @@
 		crossorigin="anonymous"></script>
 
 <ul class="nav">
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/">Home</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
+		<li class="nav-item"><a class="nav-link" href="http://localhost:1010/Creneau/Return?id=${medecin.idMedecin}">Retour</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/init">Departement</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/init">Medecin</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/init">Patient</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Créneau</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/init">Consultation</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/init">Facture</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/init">Prescription</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/init">User</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
-		</li>	
+
+			
 	</ul>
 	
-	<h3>Créneaux</h3>
+	<h3>Créneaux du Dr ${medecin.nomMedecin}</h3>
 <br>
-<table class="table table-striped">
+
 			
 		
-		<form:form action="Ajout" method="post">
+		<form:form action="Ajout?id=${medecin.idMedecin}" method="post">
 		<table>
-			<tr>
-				<td>ID<input type="text" name="id"></td>
-				<td>Médecin<input type="text" name="medecin"></td>											
+			<tr>											
 				<td>Horaire<input type="text" name="horaire"></td>		
 				<td>Réservé<input type="text" name="reserve"></td>
 				<td><input class="btn btn-primary" type="submit"
@@ -76,28 +56,7 @@
 		</table>
 	</form:form>
 	
-	<form:form action="Update" method="post">
-		<table>
-			<tr>
-				<td>ID<input type="text" name="id"></td>
-				<td>Médecin<input type="text" name="medecin"></td>											
-				<td>Horaire<input type="text" name="horaire"></td>		
-				<td>Réservé<input type="text" name="reserve"></td>
-				<td><input class="btn btn-primary" type="submit"
-					value="Mettre à jour un Créneau" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
-	
-	<form:form action="Supp" method="post">
-		<table>
-			<tr>
-				<td>ID<input type="text" name="id"></td>
-				<td><input class="btn btn-primary" type="submit"
-					value="Supprimer un Créneau" name="action"></td>
-			</tr>
-		</table>
-	</form:form>
+
 	
 	<form:form action="All" method="get">
 		<input class="btn btn-primary" type="submit"
@@ -124,6 +83,31 @@
 					<td>${cr.reserve}</td>					
 				</tr>
 			</c:forEach>
+		</table>
+	</form:form>
+	
+		<form:form action="Update" method="post">
+		<table>
+			<tr>
+				<td>ID<input type="text" name="id"></td>
+				<td>Médecin<input type="text" name="medecin"></td>											
+				<td>Horaire<input type="text" name="horaire"></td>		
+				<td>Réservé<input type="text" name="reserve"></td>
+				<td><input class="btn btn-primary" type="submit"
+					value="Mettre à jour un Créneau" name="action"></td>
+			</tr>
+		</table>
+	</form:form>
+	
+	<br> <br> <br>
+	
+	<form:form action="Supp" method="post">
+		<table>
+			<tr>
+				<td>ID<input type="text" name="id"></td>
+				<td><input class="btn btn-primary" type="submit"
+					value="Supprimer un Créneau" name="action"></td>
+			</tr>
 		</table>
 	</form:form>
 	

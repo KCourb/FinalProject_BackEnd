@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.clinique.dao.ICreneauDAO;
 import com.projet.clinique.entity.Creneau;
+import com.projet.clinique.entity.Patient;
 
 @Service
 public class CreneauService {
@@ -41,5 +42,14 @@ public class CreneauService {
 	public List<Creneau> GetAll() {
 		List<Creneau> res = dao.findAll();
 		return res;
+	}
+	
+	public long GetNewCreId() {
+		List<Creneau> lstcre = this.GetAll();
+		int n = lstcre.size();
+		long taille = n;
+		
+		return taille;
+		
 	}
 }

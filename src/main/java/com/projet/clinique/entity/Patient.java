@@ -2,6 +2,7 @@ package com.projet.clinique.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -25,7 +26,7 @@ public class Patient {
 	private int numSecu;
 	@Column
 	private String mailPatient;
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private Users user;
 	

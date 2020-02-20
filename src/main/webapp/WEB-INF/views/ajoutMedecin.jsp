@@ -47,7 +47,7 @@
 </td>
 				
 				<td><input class="btn btn-primary" type="submit"
-					value="Ajouter un département" name="action"></td>
+					value="Ajouter un medecin" name="action"></td>
 			</tr>
 		</table>
 	</form:form>

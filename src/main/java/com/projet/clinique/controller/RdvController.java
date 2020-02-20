@@ -57,26 +57,27 @@ public class RdvController {
 	
 	@RequestMapping(value="/init", method=RequestMethod.GET)
 	public String init(@ModelAttribute("r") Rdv r , 
-			HttpServletRequest request , Model model) {
+			HttpServletRequest request , ModelMap model) {
 		Long idPatient  = Long.parseLong(request.getParameter("id"));
 		model.addAttribute("patient", pserv.GetOne(idPatient));
 	    patTransversal = pserv.GetOne(idPatient);
+	    model.addAttribute("lstdep", dserv.GetAll());
 		return "rdvDep";
 	}
 	
 	@RequestMapping(value="/Ajout", method=RequestMethod.POST)
 	public String AjoutRdv(@ModelAttribute("r") Rdv r, @ModelAttribute("patient") Patient patient , Model model) {
 		r.setPatient(patient);
-		r.setCreneau(null);
+		
 		rserv.AjoutService(r);
-//		Long idD = r.getCreneau().getId();
-//		Creneau c = cserv.GetOne(idD);
-//		String cre = c.getHoraire();
-//		Medecin m = c.getMedecin();		
-//		c.setHoraire(cre);
-//		c.setMedecin(m);
-//		c.setReserve(true);
-//		cserv.Update(c);
+		Long idD = r.getCreneau().getId();
+		Creneau c = cserv.GetOne(idD);
+		String cre = c.getHoraire();
+		Medecin m = c.getMedecin();		
+		c.setHoraire(cre);
+		c.setMedecin(m);
+		c.setReserve(true);
+		cserv.Update(c);
 		model.addAttribute("lerdv", rserv.GetOne(r.getIdRdv()));
 		return "leRdv";
 	}
@@ -112,17 +113,20 @@ public class RdvController {
 		return "rdvCreneau";
 	}
 	
-	@RequestMapping(value="/AllDep", method=RequestMethod.GET)
-	public String GetAllDepartement(ModelMap model) {
-		model.addAttribute("lstdep", dserv.GetAll());
-		return "rdvDep";
-	}
+//	@RequestMapping(value="/AllDep", method=RequestMethod.GET)
+//	public String GetAllDepartement(ModelMap model) {
+//		model.addAttribute("lstdep", dserv.GetAll());
+//		
+//		return "rdvDep";
+//	}
 	
 	
 	@RequestMapping(value="/SelectDep", method=RequestMethod.POST)
-public String SelectDep(@ModelAttribute("d") Departement d,  @ModelAttribute("patient") Patient patient , Model model ) {
+public String SelectDep(@ModelAttribute("d") Departement d, HttpServletRequest request ,   ModelMap model ) {
+		Long idPatient  = Long.parseLong(request.getParameter("idPat"));
+		Patient patient = pserv.GetOne(idPatient);
 	model.addAttribute("ledep", dserv.GetOne(d.getIdDepartement()));
-	model.addAttribute("patient", patTransversal);
+	model.addAttribute("patient", patient);
 	return "rdvMed";
 }
 	

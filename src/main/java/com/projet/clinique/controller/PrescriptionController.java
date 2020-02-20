@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projet.clinique.entity.Facture;
+import com.projet.clinique.entity.Medecin;
 import com.projet.clinique.entity.Prescription;
 import com.projet.clinique.service.ConsultationService;
 import com.projet.clinique.service.PrescriptionService;
@@ -39,8 +40,11 @@ public class PrescriptionController {
 	
 	@RequestMapping(value="/init", method=RequestMethod.GET)
 	public String init(@ModelAttribute("p") Prescription p, HttpServletRequest req, Model model) {
-		Long idPrescription = Long.parseLong(req.getParameter("id"));
-		model.addAttribute("laconsultation", cserv.GetOne(idPrescription));
+		model.addAttribute("listeDesPrescriptions", pserv.GetAll());
+		Long idConsultation = Long.parseLong(req.getParameter("id"));
+		model.addAttribute("laconsultation", cserv.GetOne(idConsultation));
+		Medecin medecin = ((cserv.GetOne(idConsultation)).getRdv()).getMedecin();
+		model.addAttribute("medecin", medecin);
 		return "prescription";
 	}
 	

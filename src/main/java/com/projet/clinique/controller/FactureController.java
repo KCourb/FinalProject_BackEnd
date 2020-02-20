@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projet.clinique.entity.Consultation;
 import com.projet.clinique.entity.Facture;
+import com.projet.clinique.entity.Medecin;
 import com.projet.clinique.entity.Prescription;
 import com.projet.clinique.service.ConsultationService;
 import com.projet.clinique.service.FactureService;
@@ -41,8 +42,11 @@ public class FactureController {
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
 	public String init(@ModelAttribute("f") Facture f, HttpServletRequest req, Model model) {
+		model.addAttribute("listeDesFactures", fserv.GetAll());
 		Long idConsultation = Long.parseLong(req.getParameter("id"));
 		model.addAttribute("laconsultation", cserv.GetOne(idConsultation));
+		Medecin medecin = ((cserv.GetOne(idConsultation)).getRdv()).getMedecin();
+		model.addAttribute("medecin", medecin);
 		return "facture";
 	}
 
@@ -67,11 +71,16 @@ public class FactureController {
 	@RequestMapping(value = "/ByID", method = RequestMethod.GET)
 	public String GetFactureByID(@ModelAttribute("f") Facture f, Model model) {
 		model.addAttribute("lafacture", fserv.GetOne(f.getIdFacture()));
+		model.addAttribute("laconsultation", (fserv.GetOne(f.getIdFacture())).getConsultation());
 		return "laFacture";
 	}
 
 	@RequestMapping(value = "/Update", method = RequestMethod.POST)
-	public String UpdateFacture(@ModelAttribute("f") Facture f, Model model) {
+	public String UpdateFacture(@ModelAttribute("f") Facture f, Model model, HttpServletRequest req) {
+		Long idConsultation = Long.parseLong(req.getParameter("id"));
+		model.addAttribute("laconsultation", cserv.GetOne(idConsultation));
+		Medecin medecin = ((cserv.GetOne(idConsultation)).getRdv()).getMedecin();
+		model.addAttribute("medecin", medecin);
 		fserv.Update(f);
 		if (f.getPayee() == true) {
 			Consultation c = f.getConsultation();
@@ -93,14 +102,20 @@ public class FactureController {
 		return "facture";
 	}
 
-	@RequestMapping(value = "/All", method = RequestMethod.GET)
-	public String getAllFacture(ModelMap model) {
-		model.addAttribute("listeDesFactures", fserv.GetAll());
-		return "facture";
-	}
+//	@RequestMapping(value = "/All", method = RequestMethod.GET)
+//	public String getAllFacture(ModelMap model , HttpServletRequest req) {
+//		model.addAttribute("listeDesFactures", fserv.GetAll());
+//		Long idConsultation = Long.parseLong(req.getParameter("idConsultation"));
+//		model.addAttribute("consultation", cserv.GetOne(idConsultation));
+//		return "facture";
+//	}
 
 	@RequestMapping(value = "/Txt", method = RequestMethod.GET)
-	public String Exporttxt(@ModelAttribute("f") Facture f, Model model) {
+	public String Exporttxt(@ModelAttribute("f") Facture f, Model model, HttpServletRequest req) {
+//		Long idConsultation = Long.parseLong(req.getParameter("id"));
+//		model.addAttribute("laconsultation", cserv.GetOne(idConsultation));
+//		Medecin medecin = ((cserv.GetOne(idConsultation)).getRdv()).getMedecin();
+//		model.addAttribute("medecin", medecin);
 		String texte = fserv.GetOne(f.getIdFacture()).toString();
 		try {
 			File file = new File("D:\\facture.txt"); // création du fichier
@@ -113,7 +128,7 @@ public class FactureController {
 			e.printStackTrace();
 		}
 
-		return "facture";
+		return "Menu";
 	}
 	
 	

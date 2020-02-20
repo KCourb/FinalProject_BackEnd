@@ -76,5 +76,16 @@ public class MedecinService {
 //		return nouveau; 
 //	
 	}
+	
+	public Medecin GetByNom(String nom) {
+		List<Medecin> allMed = this.GetAll();
+		Medecin res = new Medecin();
+		for (Medecin med : allMed) {
+			if (med.getNomMedecin().equals(nom)) {
+				res=med;
+			}
+		}
+		return res;
+	}
 
 }

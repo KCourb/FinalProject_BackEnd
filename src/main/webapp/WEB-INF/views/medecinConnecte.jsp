@@ -11,15 +11,35 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 		crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Clinique C'était sûr !!!</title>
+<title>Medecin</title>
 </head>
 <body>
 
-<h3>Bienvenue sur le site de la Clinique "C'était sûr !"</h3>
+<h3>Bienvenue Dr ${medecin.getNomMedecin()}</h3>
 
-<a href="http://localhost:1010/HeadMaster">Se connecter en tant que Suprême Leader</a>  <br> <br>
-<a href="http://localhost:1010/Medecin">Se connecter en tant que Medecin</a> <br> <br>
-<a href="http://localhost:1010/Patient">Se connecter en tant que Patient</a> <br> <br>
+
+<table>
+
+			<tr>
+				<td>Nom :</td>
+				<td>${medecin.nomMedecin}</td>
+			</tr>
+						<tr>
+				<td>Departement :</td>
+				<td>${medecin.departement.nomDepartement}</td>
+			</tr>
+
+
+		</table>
+		
+		
+		<a href="http://localhost:1010/Creneau/init?id=${medecin.idMedecin}">Gerer son emploi du temps</a>
+		<a href="http://localhost:1010/Consultation/init?id=${medecin.idMedecin}">Creer une consultation</a>
+		
+		
+		
+
+
 
 
 

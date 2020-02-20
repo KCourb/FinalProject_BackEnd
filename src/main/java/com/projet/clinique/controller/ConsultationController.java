@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projet.clinique.entity.Consultation;
-import com.projet.clinique.entity.Rdv;
 import com.projet.clinique.service.ConsultationService;
+import com.projet.clinique.service.MedecinService;
 import com.projet.clinique.service.RdvService;
 
 @Controller
@@ -22,6 +22,27 @@ public class ConsultationController {
 	@Autowired
 	private ConsultationService cserv;
 	
+	@Autowired
+	private MedecinService mserv;
+	
+	
+	
+	public MedecinService getMserv() {
+		return mserv;
+	}
+
+	public void setMserv(MedecinService mserv) {
+		this.mserv = mserv;
+	}
+
+	public RdvService getRserv() {
+		return rserv;
+	}
+
+	public void setRserv(RdvService rserv) {
+		this.rserv = rserv;
+	}
+
 	@Autowired
 	private RdvService rserv;
 
@@ -34,7 +55,9 @@ public class ConsultationController {
 	}
 	
 	@RequestMapping(value="/init", method=RequestMethod.GET)
-	public String init(@ModelAttribute("co") Consultation co, Model model, HttpServletRequest req) {
+	public String init(@ModelAttribute("co") Consultation co, Model model, HttpServletRequest request) {
+		Long idMedecin  = Long.parseLong(request.getParameter("id"));
+		model.addAttribute("medecin", mserv.GetOne(idMedecin));
 		return "consultation";
 	}
 	

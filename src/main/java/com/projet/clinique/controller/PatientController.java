@@ -60,7 +60,7 @@ public class PatientController {
 	}
 	
 	@RequestMapping(value="/Login", method=RequestMethod.POST)
-	public String init(@ModelAttribute("password") String password , Model model) {
+	public String init(@ModelAttribute("password") String password , ModelMap model) {
 		int numsecu = Integer.parseInt(password);
 		
 		Patient patient = pserv.GetByNumSecu(numsecu);

@@ -34,28 +34,6 @@
 <ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/">Home</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/login">Login</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Departement/init">Departement</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Medecin/init">Medecin</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Patient/init">Patient</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Creneau/init">Créneau</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Rdv/init">Rdv</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Consultation/init">Consultation</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Facture/init">Facture</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Prescription/init">Prescription</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/User/init">User</a>
-		</li>
-		<li class="nav-item"><a class="nav-link" href="http://localhost:8090/Role/init">Role</a>
-		</li>	
 	</ul>
 	<h3>Facture</h3>
 <br>
@@ -86,7 +64,7 @@
 		</table>
 	</form:form>
 	
-	<form:form action="Update" method="post">
+	<form:form action="Update?id=${laconsultation.idConsultation}" method="post">
 		<table>
 			<tr>
 				<td>ID Facture<input type="text" name="idFacture"></td>
@@ -95,7 +73,7 @@
 				<td>Montant<input type="text" name="montant"></td>						
 				<td>Payée<input type="text" name="payee"></td>											
 				<td><input class="btn btn-primary" type="submit"
-					value="Mettre à jour une facture" name="action"></td>
+					value="Facture payée" name="action"></td>
 			</tr>
 		</table>
 	</form:form>
@@ -109,12 +87,12 @@
 		</table>		
 	</form:form>
 	
-	<a href="http://localhost:8090/Consultation/init">Consultation</a>
+	<a href="http://localhost:1010/Consultation/init?id=${medecin.idMedecin}">Consultation</a>
 	
 	
-	<form:form action="All" method="get">
+<%-- 	<form:form action="All?idConsultation=${laconsultation.idConsultation}" method="get">
 		<input class="btn btn-primary" type="submit"
-			value="afficher toutes les factures" name="action">
+			value="afficher toutes les factures" name="action"> --%>
 		<br>
 		<br>
 		<p>
@@ -139,7 +117,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-	</form:form>
+	<%-- </form:form> --%>
 
 </body>
 </html>
